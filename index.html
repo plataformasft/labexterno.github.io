@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
+  <style>
+    .hero.is-custom {
+      background-color: #FFC807;
+      color: black;
+    }
+    .datepicker-dropdown {
+      background-color: #fff;
+    }
+    .datepicker td, .datepicker th {
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero is-custom is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Registro Laboratorio Externo<img src="vitapro_2.png" alt="Logo" style="float: right; width: 180px; height: auto;"></h1>
+      </div>
+    </div>
+  </section>
+  <form id="form" class="container m-4 pl-4" method="POST" enctype="multipart/form-data">
+
+
+    <div class="field">
+      <label class="label">Fecha de registro</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="yyyy-mm-dd" name="Fecha" id="date" required style="max-width: 210px;" />
+      </div>
+    </div>
+
+
+    <script>
+      $(document).ready(function(){
+        $('#date').datepicker({
+          format: "yyyy-mm-dd",
+          language: "es",
+          autoclose: true,
+          todayHighlight: true
+        });
+      });
+    </script>
+
+
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">Lab. Externo</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Escribir Lab. Externo" name="Lab.Externo" required style="max-width: 500px;" />
+          </div>
+        </div>
+      </div>
+
+
+      <div class="column">
+        <div class="field">
+          <label class="label">N° de Informe</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="N° de Informe" name="InformeEnsayo" required style="max-width: 210px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">*Identificación (Producto)</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Escribir Identificación" name="CODIGO_ORIGINAL" required style="max-width: 500px;" />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Tipo de Producto</label>
+          <div class="control">
+            <div class="select">
+              <select name="TipoProducto" id="tipoProducto" onchange="mostrarCampoOtro()" required>
+                <option value="" disabled selected hidden>Selecciona una opción</option>
+                <option value="Alimento Balanceado">Alimento Balanceado</option>
+                <option value="Otros">Otros</option>
+              </select>
+            </div>
+        </div>
+        </div>
+       
+          <div class="field hidden" id="campoOtro">
+              <label class="label">Especificar otro tipo de producto</label>
+              <div class="control">
+                <input class="input" type="text" name="OtroTipoProducto" placeholder="Especificar otro" style="max-width: 210px;">
+              </div>
+          </div>
+       
+      </div>
+    </div>
+
+
+    <hr style="margin-top: 20px; margin-bottom: 20px;">
+    <p class="subtitle is-4 has-text-weight-bold has-text-blue" style="border-top: 1px solid #000; padding-top: 8px;">Minerales</p>
+    <p class="subtitle is-6 has-text-black">- Convencionales</p>
+    <!--Fila 1-->
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">Calcio</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Calcio (%)" name="Calcio %" min="0" max="100" step="any"  />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Fosfóro</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Fosfóro (%)" name="Fosfóro %" min="0" max="100" step="any"  />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Potasio</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Potasio (%)" name="Potasio (%)" min="0" max="100" step="any"  />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Magnesio</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Magnesio (%)" name="Magnesio (%)" min="0" max="100" step="any"  />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Sodio</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Sodio (%)" name="Sodio (%)" min="0" max="100" step="any"  />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Fila 1-->
+
+
+    <!--Fila 2-->
+    <div class="columns">
+      <!-- Añadir campos adicionales aquí si es necesario -->
+    </div>
+    <!--Fila 2-->
+
+
+    <!--Fila 3-->
+    <div class="column"> </div>
+    <p class="subtitle is-6 has-text-black">- Traza</p>
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">Zinc</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Zinc (mg/Kg)" name="Zinc (mg/Kg)" min="0" max="100" step="any"  />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Selenio</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Selenio (mg/Kg)" name="Selenio (mg/Kg)" min="0" max="100" step="any"  />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Cobre</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Cobre (mg/Kg)" name="Cobre (mg/Kg)" min="0" max="100" step="any"  />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Silicio</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Silicio (mg/Kg)" name="Silicio (mg/Kg)" min="0" max="100" step="any"  />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <hr style="margin-top: 20px; margin-bottom: 20px;">
+    <p class="subtitle is-4 has-text-weight-bold has-text-blue" style="border-top: 1px solid #000; padding-top: 8px;">Otros</p>
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">Proteina Soluble</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Proteina Soluble (g/100 g)" name="Proteina Soluble (%)" min="0" max="100" step="any"  />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Fosfolípidos</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Fosfolípidos (g/100 g)" name="Fosfolípidos lab ext" min="0" max="100" step="any"  />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Proteína cruda</label>
+          <div class="control">
+            <input class="input" type="number" placeholder="Proteína cruda (g/100 g)" name="Proteina cruda" min="0" max="100" step="any"  />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <hr style="margin-top: 20px; margin-bottom: 20px;">
+
+
+    <div class="field">
+      <label class="label">Fiabilidad</label>
+      <div class="control">
+        <label class="checkbox">
+          <input type="checkbox" name="Agree To Terms" value="yes" required /> Confirmo la fiabilidad de la información proporcionada
+        </label>
+      </div>
+    </div>
+
+
+    <div class="field">
+      <label class="label">Información adicional</label>
+      <div class="control">
+        <textarea class="textarea" placeholder="Comentario" name="comentario"></textarea>
+      </div>
+    </div>
+
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-primary" type="submit" id="submit-button">Guardar</button>
+      </div>
+      <div class="control">
+        <button class="button is-danger" type="button">Cancelar</button>
+      </div>
+    </div>
+  </form>
+  <div id="message" style="display: none; margin: 20px; font-weight: bold; color: rgb(7, 17, 111); padding: 8px; background-color: rgb(83, 241, 31); border-radius: 4px; border-color: rgb(11, 61, 132);"></div>
+
+
+  <script>
+    function mostrarCampoOtro() {
+      var select = document.getElementById('tipoProducto');
+      var campoOtro = document.getElementById('campoOtro');
+      if (select.value === 'Otros') {
+        campoOtro.classList.remove('hidden');
+      } else {
+        campoOtro.classList.add('hidden');
+      }
+    }
+
+
+        document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+        document.getElementById("message").textContent = "Submitting..";
+        document.getElementById("message").style.display = "block";
+        document.getElementById("submit-button").disabled = true;
+
+
+        // Collect the form data
+        var formData = new FormData(this);
+        var keyValuePairs = [];
+        for (var pair of formData.entries()) {
+          keyValuePairs.push(pair[0] + "=" + pair[1]);
+        }
+
+
+        var formDataString = keyValuePairs.join("&");
+
+
+        // Send a POST request to your Google Apps Script
+        fetch(
+             "https://script.google.com/macros/s/AKfycbwKmQPqDpiBMwaw_HbpAnAv1U17muCj5sLId3oOwpGlIh1hpLTNnpBIBkFSQLA6jUPN/exec",
+           //"https://script.google.com/macros/s/AKfycbziICwhCQMLOR_68pU0YeLb75vLWan64poPfVuJI0WTrYw6gUn2LCAQZecLwlu-HzqP/exec",
+          //https://script.google.com/macros/s/AKfycbziICwhCQMLOR_68pU0YeLb75vLWan64poPfVuJI0WTrYw6gUn2LCAQZecLwlu-HzqP/exec
+          //https://script.google.com/macros/s/AKfycbziICwhCQMLOR_68pU0YeLb75vLWan64poPfVuJI0WTrYw6gUn2LCAQZecLwlu-HzqP/exec
+          {
+            redirect: "follow",
+            method: "POST",
+            body: formDataString,
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          }
+        )
+          .then(function (response) {
+            // Check if the request was successful
+            if (response) {
+              return response; // Assuming your script returns JSON response
+            } else {
+              throw new Error("Failed to submit the form.");
+            }
+          })
+          .then(function (data) {
+            // Display a success message
+            document.getElementById("message").textContent =
+              "Data submitted successfully!";
+            document.getElementById("message").style.display = "block";
+            document.getElementById("message").style.backgroundColor = "green";
+            document.getElementById("message").style.color = "beige";
+            document.getElementById("submit-button").disabled = false;
+            document.getElementById("form").reset();
+
+
+            setTimeout(function () {
+              document.getElementById("message").textContent = "";
+              document.getElementById("message").style.display = "none";
+            }, 2600);
+          })
+          .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("message").textContent =
+              "An error occurred while submitting the form.";
+            document.getElementById("message").style.display = "block";
+          });
+      });
+  </script>
+</body>
+</html>
